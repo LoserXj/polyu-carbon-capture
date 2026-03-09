@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.0] - 2026-03-10
+
+### Added
+- GitHub Pages 自动部署（`.github/workflows/deploy.yml`）
+- 浮动搜索栏（从 TopBar 移至地图左上角独立悬浮）
+
+### Changed
+- 全站切换为白色主题（CARTO Positron 底图 + 白色 UI）
+- TopBar 重设计：白色背景 + PolyU Logo 融合 + 品牌文字黑色
+- DetailPanel 重设计：类别徽章、快速统计行、分段式详情、红色左边框强调
+- SearchBar 下拉菜单改为 `position: absolute`，修复输入时文字被遮挡的问题
+- 建筑颜色统一为 PolyU 红色系（#8c1e32）
+- Loading 动画适配白色主题
+
+### Fixed
+- 搜索栏打字时下拉列表把输入框顶上去导致看不见文字
+
 ## [0.1.0] - 2026-03-09
 
 ### Added
