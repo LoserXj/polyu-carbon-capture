@@ -3,44 +3,50 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 56px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background: linear-gradient(180deg, rgba(10, 10, 20, 0.85) 0%, rgba(10, 10, 20, 0) 100%);
-  z-index: 250;
-  pointer-events: none;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.03);
+  z-index: 300;
 }
 
-.top-bar > * {
-  pointer-events: auto;
-}
-
-.project-title {
+/* Left: Logo + Brand inline */
+.top-bar-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #f0f0f0;
-  letter-spacing: 0.3px;
+  gap: 10px;
   user-select: none;
+  flex-shrink: 0;
 }
 
-.project-title-accent {
-  color: #00c8b4;
+.top-bar-logo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
-.project-title-divider {
+.top-bar-brand-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.3px;
+}
+
+.top-bar-sep {
   width: 1px;
-  height: 16px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 0 2px;
+  height: 18px;
+  background: rgba(0, 0, 0, 0.12);
 }
 
-.project-title-sub {
-  font-weight: 400;
+.top-bar-project {
   font-size: 13px;
-  color: #8a8a9a;
+  font-weight: 400;
+  color: #888;
+  letter-spacing: 0.2px;
 }
+

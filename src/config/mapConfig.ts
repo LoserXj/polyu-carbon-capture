@@ -9,41 +9,41 @@ export const INITIAL_VIEW_STATE: MapViewState = {
   bearing: -17,
 }
 
-// CARTO 免费暗色瓦片
-export const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json'
+// CARTO 亮色底图
+export const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 
-// 建筑颜色
-export const COLOR_DEFAULT: [number, number, number, number] = [0, 200, 180, 160]
-export const COLOR_HOVER: [number, number, number, number] = [0, 255, 220, 200]
-export const COLOR_SELECTED: [number, number, number, number] = [255, 200, 0, 200]
+// 建筑颜色（白色底图上用更深、更饱和的色值）
+export const COLOR_DEFAULT: [number, number, number, number] = [140, 30, 50, 190]
+export const COLOR_HOVER: [number, number, number, number] = [180, 40, 60, 220]
+export const COLOR_SELECTED: [number, number, number, number] = [200, 50, 70, 230]
 
-// 楼层渐变色：从深到浅
+// 楼层渐变色：PolyU 红色系，低层深、高层浅
 export function getFloorColor(
   floor: number,
   totalFloors: number,
   isHovered: boolean,
   isHighlighted: boolean
 ): [number, number, number, number] {
-  if (isHovered) return [0, 255, 220, 220]
-  if (isHighlighted) return [255, 200, 0, 220]
+  if (isHovered) return [220, 60, 80, 230]
+  if (isHighlighted) return [240, 80, 100, 240]
   const t = floor / totalFloors
-  const r = Math.round(0 + t * 40)
-  const g = Math.round(120 + t * 100)
-  const b = Math.round(130 + t * 80)
-  return [r, g, b, 180]
+  const r = Math.round(120 + t * 60)
+  const g = Math.round(20 + t * 40)
+  const b = Math.round(35 + t * 50)
+  return [r, g, b, 190]
 }
 
-// 光照材质
+// 光照材质（白色底图上需要更亮的材质）
 export const BUILDING_MATERIAL = {
-  ambient: 0.35,
-  diffuse: 0.6,
-  shininess: 32,
-  specularColor: [30, 30, 30] as [number, number, number],
+  ambient: 0.5,
+  diffuse: 0.7,
+  shininess: 40,
+  specularColor: [60, 60, 60] as [number, number, number],
 }
 
 export const FLOOR_MATERIAL = {
-  ambient: 0.4,
-  diffuse: 0.6,
-  shininess: 32,
-  specularColor: [30, 30, 30] as [number, number, number],
+  ambient: 0.5,
+  diffuse: 0.7,
+  shininess: 40,
+  specularColor: [60, 60, 60] as [number, number, number],
 }

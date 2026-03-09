@@ -1,36 +1,33 @@
 .search-bar {
-  position: absolute;
-  top: 12px;
-  left: 16px;
-  z-index: 300;
-  width: 300px;
+  position: relative;
+  width: 100%;
 }
 
 .search-input-wrapper {
   display: flex;
   align-items: center;
-  background: rgba(16, 16, 26, 0.92);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 200, 180, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 0 12px;
   transition: border-color 0.25s, box-shadow 0.25s;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
 }
 
 .search-input-wrapper:focus-within {
-  border-color: rgba(0, 200, 180, 0.45);
-  box-shadow: 0 2px 20px rgba(0, 200, 180, 0.08);
+  border-color: rgba(140, 30, 50, 0.4);
+  box-shadow: 0 2px 16px rgba(140, 30, 50, 0.08);
 }
 
 .search-icon {
-  color: #666;
+  color: #aaa;
   flex-shrink: 0;
   transition: color 0.2s;
 }
 
 .search-input-wrapper:focus-within .search-icon {
-  color: #00c8b4;
+  color: #8c1e32;
 }
 
 .search-input {
@@ -38,20 +35,20 @@
   background: none;
   border: none;
   outline: none;
-  color: #e0e0e0;
+  color: #333;
   font-size: 14px;
-  padding: 10px 8px;
+  padding: 9px 8px;
   font-family: inherit;
 }
 
 .search-input::placeholder {
-  color: #555;
+  color: #aaa;
 }
 
 .search-clear {
   background: none;
   border: none;
-  color: #666;
+  color: #aaa;
   cursor: pointer;
   font-size: 12px;
   padding: 4px 6px;
@@ -61,21 +58,26 @@
 }
 
 .search-clear:hover {
-  color: #e0e0e0;
-  background: rgba(255, 255, 255, 0.06);
+  color: #333;
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
   margin-top: 6px;
-  background: rgba(16, 16, 26, 0.96);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 200, 180, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   overflow: hidden;
   list-style: none;
   padding: 4px 0;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
   animation: dropdownFadeIn 0.15s ease-out;
+  z-index: 400;
 }
 
 @keyframes dropdownFadeIn {
@@ -94,18 +96,18 @@
 
 .search-item:hover,
 .search-item--active {
-  background: rgba(0, 200, 180, 0.08);
+  background: rgba(140, 30, 50, 0.06);
 }
 
 .search-item-name {
   font-size: 14px;
-  color: #e0e0e0;
+  color: #333;
   font-weight: 500;
 }
 
 .search-item-en {
   font-size: 12px;
-  color: #666;
+  color: #999;
   margin-left: auto;
   text-align: right;
   max-width: 140px;
@@ -117,6 +119,6 @@
 .search-empty {
   padding: 14px;
   font-size: 13px;
-  color: #555;
+  color: #aaa;
   text-align: center;
 }

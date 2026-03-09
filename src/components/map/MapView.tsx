@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
 import { Map } from 'react-map-gl/maplibre'
 import DeckGL from '@deck.gl/react'
 import { GeoJsonLayer, SolidPolygonLayer } from '@deck.gl/layers'
@@ -7,9 +7,7 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 
 import Tooltip from './Tooltip'
 import DetailPanel from '../panel/DetailPanel'
-import SearchBar from '../search/SearchBar'
 
-import { useBuildings } from '../../hooks/useBuildings'
 import { useFloors } from '../../hooks/useFloors'
 import { getPolygonCenter, polygonToSolid } from '../../utils/geo'
 import {
@@ -19,8 +17,9 @@ import {
 } from '../../config/mapConfig'
 
 import type { ViewStateChangeParameters, MapViewState, PickingInfo } from '@deck.gl/core'
-import type { Feature, Polygon } from 'geojson'
+import type { Feature, FeatureCollection, Polygon } from 'geojson'
 import type { BuildingProperties, FloorProperties } from '../../types'
+import type { MapHandle } from '../../App'
 
 interface HoverInfo {
   x: number
@@ -29,7 +28,12 @@ interface HoverInfo {
   isFloor?: boolean
 }
 
-export default function MapView() {
+interface MapViewProps {
+  buildingsData: FeatureCollection | null
+  onRegisterHandle: (handle: MapHandle) => void
+}
+
+export default function MapView({ buildingsData, onRegisterHandle }: MapViewProps) {
   const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [hoveredFloor, setHoveredFloor] = useState<number | null>(null)
@@ -37,13 +41,39 @@ export default function MapView() {
   const [selectedBuilding, setSelectedBuilding] = useState<BuildingProperties | null>(null)
   const [highlightedFloor, setHighlightedFloor] = useState<number | null>(null)
 
-  const { data: buildingsData, list: buildingsList } = useBuildings()
-
   const isFloorMode = selectedBuilding?.has_floors === true
   const expandedBuildingId = isFloorMode ? selectedBuilding.id : null
 
   const { activeFloors } = useFloors(expandedBuildingId)
   const totalFloors = activeFloors.length
+
+  // Expose handle to parent for search-triggered actions
+  const selectBuilding = useCallback((building: BuildingProperties) => {
+    if (!buildingsData) return
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const feature = buildingsData.features.find((f: any) => f.properties?.id === building.id)
+    if (!feature) return
+
+    const [lng, lat] = getPolygonCenter(feature as Feature<Polygon>)
+
+    setViewState({
+      longitude: lng,
+      latitude: lat,
+      zoom: 17.5,
+      pitch: 50,
+      bearing: -17,
+      transitionDuration: 1200,
+      transitionInterpolator: new FlyToInterpolator(),
+    } as any) // eslint-disable-line @typescript-eslint/no-explicit-any
+
+    setSelectedBuilding(building)
+    setHighlightedFloor(null)
+    setHoveredFloor(null)
+  }, [buildingsData])
+
+  useEffect(() => {
+    onRegisterHandle({ selectBuilding })
+  }, [onRegisterHandle, selectBuilding])
 
   const filteredBuildingsData = useMemo(() => {
     if (!buildingsData || !expandedBuildingId) return buildingsData
@@ -103,29 +133,6 @@ export default function MapView() {
   const handleFloorSelect = useCallback((floor: number | null) => {
     setHighlightedFloor(floor)
   }, [])
-
-  const handleSearchSelect = useCallback((building: BuildingProperties) => {
-    if (!buildingsData) return
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const feature = buildingsData.features.find((f: any) => f.properties?.id === building.id)
-    if (!feature) return
-
-    const [lng, lat] = getPolygonCenter(feature as Feature<Polygon>)
-
-    setViewState({
-      longitude: lng,
-      latitude: lat,
-      zoom: 17.5,
-      pitch: 50,
-      bearing: -17,
-      transitionDuration: 1200,
-      transitionInterpolator: new FlyToInterpolator(),
-    } as any) // eslint-disable-line @typescript-eslint/no-explicit-any
-
-    setSelectedBuilding(building)
-    setHighlightedFloor(null)
-    setHoveredFloor(null)
-  }, [buildingsData])
 
   const selectedId = selectedBuilding?.id ?? null
 
@@ -208,8 +215,6 @@ export default function MapView() {
       >
         <Map mapStyle={MAP_STYLE} attributionControl={false} />
       </DeckGL>
-
-      <SearchBar buildings={buildingsList} onSelect={handleSearchSelect} />
 
       {(showBuildingTooltip || showFloorTooltip) && hoverInfo && (
         <Tooltip

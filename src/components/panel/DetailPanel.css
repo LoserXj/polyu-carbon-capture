@@ -1,100 +1,196 @@
+/* ===== Panel Container ===== */
 .detail-panel {
   position: absolute;
-  top: 0;
+  top: 52px;
   right: 0;
-  width: 340px;
-  height: 100%;
-  background: rgba(14, 14, 24, 0.94);
-  backdrop-filter: blur(16px);
-  border-left: 1px solid rgba(0, 200, 180, 0.12);
+  width: 360px;
+  height: calc(100% - 52px);
+  background: #ffffff;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
   z-index: 200;
   display: flex;
   flex-direction: column;
   animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
-  box-shadow: -8px 0 40px rgba(0, 0, 0, 0.3);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.05);
 }
 
 @keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0.5; }
+  from { transform: translateX(100%); opacity: 0.6; }
   to   { transform: translateX(0); opacity: 1; }
 }
 
+/* ===== Header ===== */
 .panel-header {
+  padding: 20px 20px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 3px solid #8c1e32;
+  background: linear-gradient(135deg, rgba(140, 30, 50, 0.03) 0%, transparent 60%);
+}
+
+.panel-header-content {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+}
+
+.panel-header-top {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 22px 20px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-bottom: 10px;
 }
 
-.panel-title h2 {
+.panel-name {
   margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-  color: #f5f5f5;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a1a;
   line-height: 1.3;
+  letter-spacing: -0.2px;
 }
 
-.panel-subtitle {
+.panel-name-en {
   display: block;
   margin-top: 4px;
   font-size: 13px;
-  color: #00c8b4;
-  opacity: 0.85;
+  color: #8c1e32;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
+/* Close button */
 .panel-close {
   background: none;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #8a8a9a;
-  font-size: 14px;
+  border: none;
+  color: #bbb;
   cursor: pointer;
-  padding: 4px 8px;
+  padding: 6px;
   border-radius: 6px;
   line-height: 1;
   transition: all 0.2s;
   flex-shrink: 0;
-  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .panel-close:hover {
-  color: #f0f0f0;
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.15);
+  color: #666;
+  background: rgba(0, 0, 0, 0.05);
 }
 
+/* ===== Category Badge ===== */
+.panel-category {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.panel-category--academic {
+  background: rgba(66, 133, 244, 0.08);
+  color: #3b7dd8;
+}
+
+.panel-category--residential {
+  background: rgba(140, 80, 200, 0.08);
+  color: #7c4dbd;
+}
+
+.panel-category--facility {
+  background: rgba(0, 150, 136, 0.08);
+  color: #00897b;
+}
+
+.panel-category--administrative {
+  background: rgba(230, 150, 30, 0.08);
+  color: #c88a1e;
+}
+
+/* ===== Body ===== */
 .panel-body {
   flex: 1;
   overflow-y: auto;
+  padding: 0;
+}
+
+/* ===== Quick Stats ===== */
+.panel-stats {
+  display: flex;
+  gap: 1px;
+  background: rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.panel-stat {
+  flex: 1;
+  text-align: center;
+  padding: 14px 8px;
+  background: #ffffff;
+}
+
+.panel-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.panel-stat-unit {
+  font-size: 12px;
+  font-weight: 400;
+  color: #999;
+  margin-left: 2px;
+}
+
+.panel-stat-label {
+  font-size: 11px;
+  color: #aaa;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Detail Section ===== */
+.panel-section {
   padding: 18px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .panel-field {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+}
+
+.panel-field:last-child {
+  margin-bottom: 0;
 }
 
 .panel-field-label {
   font-size: 11px;
-  color: #6a6a7a;
+  color: #aaa;
   margin-bottom: 5px;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  font-weight: 500;
+  letter-spacing: 0.6px;
+  font-weight: 600;
 }
 
 .panel-field-value {
   font-size: 14px;
-  color: #dcdce0;
-  line-height: 1.5;
+  color: #333;
+  line-height: 1.6;
 }
 
 .panel-divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.06);
-  margin: 4px 0 18px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 4px 0 16px;
 }
 
+/* ===== Tags ===== */
 .panel-tags {
   display: flex;
   flex-wrap: wrap;
@@ -103,33 +199,35 @@
 
 .panel-tag {
   display: inline-block;
-  padding: 3px 10px;
-  border-radius: 12px;
-  background: rgba(0, 200, 180, 0.1);
-  border: 1px solid rgba(0, 200, 180, 0.15);
-  color: #00d4be;
+  padding: 4px 12px;
+  border-radius: 14px;
+  background: #f5f5f5;
+  color: #555;
   font-size: 12px;
+  font-weight: 500;
+  border: none;
   transition: background 0.2s;
 }
 
 .panel-tag:hover {
-  background: rgba(0, 200, 180, 0.18);
+  background: #eee;
 }
 
 .panel-empty {
-  color: #444;
+  color: #ccc;
 }
 
 .panel-json {
   font-size: 12px;
-  background: rgba(0, 0, 0, 0.25);
+  background: #f8f8f8;
   padding: 10px;
   border-radius: 6px;
   overflow-x: auto;
   margin: 0;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
+/* ===== Scrollbar ===== */
 .panel-body::-webkit-scrollbar {
   width: 3px;
 }
@@ -139,78 +237,51 @@
 }
 
 .panel-body::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.08);
   border-radius: 3px;
 }
 
 .panel-body::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.15);
 }
 
-/* Category badge */
-.panel-category {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.3px;
-}
-
-.panel-category--academic {
-  background: rgba(66, 133, 244, 0.15);
-  color: #6ea8fe;
-  border: 1px solid rgba(66, 133, 244, 0.2);
-}
-
-.panel-category--residential {
-  background: rgba(180, 120, 255, 0.15);
-  color: #c49dff;
-  border: 1px solid rgba(180, 120, 255, 0.2);
-}
-
-.panel-category--facility {
-  background: rgba(0, 200, 180, 0.15);
-  color: #00d4be;
-  border: 1px solid rgba(0, 200, 180, 0.2);
-}
-
-.panel-category--administrative {
-  background: rgba(255, 180, 50, 0.15);
-  color: #ffc85c;
-  border: 1px solid rgba(255, 180, 50, 0.2);
-}
-
-/* Floor selector */
+/* ===== Floor Selector ===== */
 .panel-floors {
-  margin-top: 4px;
+  padding: 18px 20px;
+}
+
+.panel-floors-title {
+  font-size: 11px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
 .panel-floors-hint {
   font-size: 11px;
-  color: #555;
-  margin-top: 4px;
-  font-style: italic;
+  color: #bbb;
+  margin-bottom: 10px;
 }
 
 .floor-list {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  margin-top: 8px;
+  gap: 4px;
 }
 
 .floor-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   text-align: left;
-  padding: 8px 12px;
-  border: 1px solid rgba(0, 200, 180, 0.1);
-  border-radius: 6px;
-  background: rgba(0, 200, 180, 0.03);
-  color: #e0e0e0;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  background: #fafafa;
+  color: #444;
   cursor: pointer;
   font-size: 13px;
   transition: all 0.18s ease;
@@ -218,34 +289,35 @@
 }
 
 .floor-item:hover {
-  background: rgba(0, 200, 180, 0.1);
-  border-color: rgba(0, 200, 180, 0.25);
-  transform: translateX(2px);
+  background: #f2f2f2;
+  border-color: rgba(0, 0, 0, 0.08);
+  transform: translateX(3px);
 }
 
 .floor-item--active {
-  background: rgba(255, 200, 0, 0.12);
-  border-color: rgba(255, 200, 0, 0.4);
+  background: rgba(140, 30, 50, 0.06);
+  border-color: rgba(140, 30, 50, 0.2);
 }
 
 .floor-item--active:hover {
-  background: rgba(255, 200, 0, 0.18);
-  border-color: rgba(255, 200, 0, 0.5);
+  background: rgba(140, 30, 50, 0.08);
+  border-color: rgba(140, 30, 50, 0.25);
 }
 
 .floor-name {
-  font-weight: 600;
-  color: #00c8b4;
-  min-width: 40px;
+  font-weight: 700;
+  color: #333;
+  min-width: 38px;
   font-size: 13px;
+  font-variant-numeric: tabular-nums;
 }
 
 .floor-item--active .floor-name {
-  color: #ffc800;
+  color: #8c1e32;
 }
 
 .floor-dept {
-  color: #777;
+  color: #999;
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
