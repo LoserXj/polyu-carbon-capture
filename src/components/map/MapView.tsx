@@ -47,6 +47,12 @@ export default function MapView({ buildingsData, onRegisterHandle }: MapViewProp
   const { activeFloors } = useFloors(expandedBuildingId)
   const totalFloors = activeFloors.length
 
+  const resetHoverState = useCallback(() => {
+    setHoveredId(null)
+    setHoveredFloor(null)
+    setHoverInfo(null)
+  }, [])
+
   // Expose handle to parent for search-triggered actions
   const selectBuilding = useCallback((building: BuildingProperties) => {
     if (!buildingsData) return
@@ -68,8 +74,8 @@ export default function MapView({ buildingsData, onRegisterHandle }: MapViewProp
 
     setSelectedBuilding(building)
     setHighlightedFloor(null)
-    setHoveredFloor(null)
-  }, [buildingsData])
+    resetHoverState()
+  }, [buildingsData, resetHoverState])
 
   useEffect(() => {
     onRegisterHandle({ selectBuilding })
@@ -108,9 +114,9 @@ export default function MapView({ buildingsData, onRegisterHandle }: MapViewProp
     if (props) {
       setSelectedBuilding(props)
       setHighlightedFloor(null)
-      setHoveredFloor(null)
+      resetHoverState()
     }
-  }, [])
+  }, [resetHoverState])
 
   const onFloorHover = useCallback((info: PickingInfo) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -127,8 +133,8 @@ export default function MapView({ buildingsData, onRegisterHandle }: MapViewProp
   const handleClose = useCallback(() => {
     setSelectedBuilding(null)
     setHighlightedFloor(null)
-    setHoveredFloor(null)
-  }, [])
+    resetHoverState()
+  }, [resetHoverState])
 
   const handleFloorSelect = useCallback((floor: number | null) => {
     setHighlightedFloor(floor)

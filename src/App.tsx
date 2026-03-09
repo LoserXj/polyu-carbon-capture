@@ -18,11 +18,15 @@ function App() {
   const { data: buildingsData, list: buildingsList } = useBuildings()
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    let innerTimer: ReturnType<typeof setTimeout>
+    const outerTimer = setTimeout(() => {
       setFadeOut(true)
-      setTimeout(() => setLoading(false), 600)
+      innerTimer = setTimeout(() => setLoading(false), 600)
     }, 800)
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(outerTimer)
+      clearTimeout(innerTimer)
+    }
   }, [])
 
   const handleSearchSelect = useCallback((building: BuildingProperties) => {

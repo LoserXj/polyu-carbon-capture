@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react'
+import { useState, useCallback, useMemo, useRef, useEffect } from 'react'
 import type { BuildingProperties } from '../../types'
 import './SearchBar.css'
 
@@ -14,16 +14,15 @@ export default function SearchBar({ buildings, onSelect }: SearchBarProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const results = query.trim()
-    ? buildings.filter(b => {
-        const q = query.toLowerCase()
-        return (
-          b.name_zh?.toLowerCase().includes(q) ||
-          b.name_en?.toLowerCase().includes(q) ||
-          b.id?.toLowerCase().includes(q)
-        )
-      }).slice(0, 8)
-    : []
+  const results = useMemo(() => {
+    if (!query.trim()) return []
+    const q = query.toLowerCase()
+    return buildings.filter(b =>
+      b.name_zh?.toLowerCase().includes(q) ||
+      b.name_en?.toLowerCase().includes(q) ||
+      b.id?.toLowerCase().includes(q)
+    ).slice(0, 8)
+  }, [query, buildings])
 
   const handleSelect = useCallback((building: BuildingProperties) => {
     onSelect(building)
