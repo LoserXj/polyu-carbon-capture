@@ -1,0 +1,284 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "VA",
+        "name_en": "Jockey Club Innovation Tower",
+        "name_zh": "赛马会创新楼",
+        "height": 78,
+        "category": "academic",
+        "departments": ["设计学院", "School of Design"],
+        "description": "由扎哈·哈迪德设计的标志性建筑，是香港理工大学设计学院所在地。",
+        "has_floors": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17980, 22.30330],
+          [114.18040, 22.30330],
+          [114.18050, 22.30360],
+          [114.18040, 22.30400],
+          [114.17990, 22.30410],
+          [114.17960, 22.30390],
+          [114.17955, 22.30360],
+          [114.17980, 22.30330]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Z",
+        "name_en": "Block Z",
+        "name_zh": "Z座",
+        "height": 65,
+        "category": "academic",
+        "departments": ["电子计算学系", "应用数学系"],
+        "description": "理工大学核心教学楼之一，容纳多个理工科系。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17870, 22.30430],
+          [114.17920, 22.30430],
+          [114.17920, 22.30480],
+          [114.17870, 22.30480],
+          [114.17870, 22.30430]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "Y",
+        "name_en": "Li Ka Shing Tower",
+        "name_zh": "李嘉诚楼",
+        "height": 55,
+        "category": "academic",
+        "departments": ["酒店及旅游业管理学院"],
+        "description": "以李嘉诚先生命名的教学大楼，是酒店及旅游业管理学院的主要教学场所。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17940, 22.30440],
+          [114.17990, 22.30440],
+          [114.17990, 22.30500],
+          [114.17940, 22.30500],
+          [114.17940, 22.30440]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "TU",
+        "name_en": "Block TU",
+        "name_zh": "TU座",
+        "height": 45,
+        "category": "academic",
+        "departments": ["工商管理学院", "会计及金融学院"],
+        "description": "理工大学商学院主要教学区域。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17800, 22.30460],
+          [114.17855, 22.30460],
+          [114.17855, 22.30520],
+          [114.17800, 22.30520],
+          [114.17800, 22.30460]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "CF",
+        "name_en": "Chow Yei Ching Building",
+        "name_zh": "周亦卿楼",
+        "height": 38,
+        "category": "academic",
+        "departments": ["工业及系统工程学系", "机械工程学系"],
+        "description": "工程学科重要教学楼。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17760, 22.30380],
+          [114.17820, 22.30380],
+          [114.17820, 22.30430],
+          [114.17760, 22.30430],
+          [114.17760, 22.30380]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "QR",
+        "name_en": "Block QR",
+        "name_zh": "QR座",
+        "height": 50,
+        "category": "academic",
+        "departments": ["应用物理学系", "应用生物及化学科技学系"],
+        "description": "理学院主要教学研究楼宇。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17830, 22.30340],
+          [114.17890, 22.30340],
+          [114.17890, 22.30380],
+          [114.17830, 22.30380],
+          [114.17830, 22.30340]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "PQ",
+        "name_en": "Chung Sze Yuen Building",
+        "name_zh": "钟士元楼",
+        "height": 72,
+        "category": "administrative",
+        "departments": ["校长办公室", "行政部门"],
+        "description": "理工大学行政大楼，以钟士元爵士命名。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17900, 22.30530],
+          [114.17960, 22.30530],
+          [114.17960, 22.30590],
+          [114.17900, 22.30590],
+          [114.17900, 22.30530]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "PODIUM",
+        "name_en": "Podium",
+        "name_zh": "平台",
+        "height": 15,
+        "category": "facility",
+        "departments": ["学生事务处", "餐饮服务"],
+        "description": "校园平台层，连接各教学楼，设有餐厅和学生服务设施。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17780, 22.30430],
+          [114.17940, 22.30430],
+          [114.17940, 22.30460],
+          [114.17780, 22.30460],
+          [114.17780, 22.30430]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "GH",
+        "name_en": "Block GH",
+        "name_zh": "GH座",
+        "height": 42,
+        "category": "academic",
+        "departments": ["电气及电子工程学系"],
+        "description": "电气与电子工程相关教学及实验室。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17730, 22.30340],
+          [114.17780, 22.30340],
+          [114.17780, 22.30380],
+          [114.17730, 22.30380],
+          [114.17730, 22.30340]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "HALL",
+        "name_en": "Student Halls of Residence",
+        "name_zh": "学生宿舍",
+        "height": 90,
+        "category": "residential",
+        "departments": [],
+        "description": "理工大学学生宿舍楼群，提供本科及研究生住宿。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.18010, 22.30480],
+          [114.18060, 22.30480],
+          [114.18060, 22.30550],
+          [114.18010, 22.30550],
+          [114.18010, 22.30480]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "LIB",
+        "name_en": "Pao Yue-kong Library",
+        "name_zh": "包玉刚图书馆",
+        "height": 35,
+        "category": "facility",
+        "departments": ["图书馆"],
+        "description": "理工大学主图书馆，以包玉刚先生命名。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17850, 22.30480],
+          [114.17920, 22.30480],
+          [114.17920, 22.30530],
+          [114.17850, 22.30530],
+          [114.17850, 22.30480]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "SPORTS",
+        "name_en": "Sports Centre",
+        "name_zh": "体育中心",
+        "height": 18,
+        "category": "facility",
+        "departments": ["体育部"],
+        "description": "理工大学体育运动中心，设有游泳池、体育馆等设施。",
+        "has_floors": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [114.17700, 22.30450],
+          [114.17770, 22.30450],
+          [114.17770, 22.30520],
+          [114.17700, 22.30520],
+          [114.17700, 22.30450]
+        ]]
+      }
+    }
+  ]
+}

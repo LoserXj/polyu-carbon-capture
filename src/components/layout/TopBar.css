@@ -1,0 +1,46 @@
+.top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: linear-gradient(180deg, rgba(10, 10, 20, 0.85) 0%, rgba(10, 10, 20, 0) 100%);
+  z-index: 250;
+  pointer-events: none;
+}
+
+.top-bar > * {
+  pointer-events: auto;
+}
+
+.project-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f0f0f0;
+  letter-spacing: 0.3px;
+  user-select: none;
+}
+
+.project-title-accent {
+  color: #00c8b4;
+}
+
+.project-title-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 2px;
+}
+
+.project-title-sub {
+  font-weight: 400;
+  font-size: 13px;
+  color: #8a8a9a;
+}
