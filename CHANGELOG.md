@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.3.0] - 2026-03-10
+
+### Changed
+- 替换建筑数据为真实 PolyU 校园 building footprint（1409 栋建筑，来源 polyu.geojson）
+- 为所有建筑生成占位属性（id、name、category、departments、description）
+- 选取 B0015（64m，18 层）作为示例楼层建筑，生成楼层数据
+- 保留原始 polyu.geojson 作为数据源备份
+
+### Notes
+- 建筑名称目前为占位符（建筑 B0001 等），后续逐栋替换真实名称
+- 类别分布：facility 601 / academic 440 / administrative 233 / residential 135
+
 ## [0.2.0] - 2026-03-10
 
 ### Added
