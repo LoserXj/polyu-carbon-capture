@@ -1678,15 +1678,16 @@
       "type": "Feature",
       "properties": {
         "id": "B0021",
-        "name_en": "Building B0021",
-        "name_zh": "建筑 B0021",
+        "name_en": "Block Z",
+        "name_zh": "Z座",
         "height": 94,
-        "category": "facility",
+        "category": "academic",
         "departments": [
-          "公共设施"
+          "电子计算学系",
+          "应用数学系"
         ],
-        "description": "校园公共设施，建筑高度 94 米。",
-        "has_floors": false
+        "description": "Block Z，理工大学核心教学楼之一，容纳多个理工科系。建筑高度 94 米，共 12 层。",
+        "has_floors": true
       },
       "geometry": {
         "type": "Polygon",
