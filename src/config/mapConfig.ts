@@ -13,9 +13,9 @@ export const INITIAL_VIEW_STATE: MapViewState = {
 export const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 
 // 建筑颜色（白色底图上用更深、更饱和的色值）
-export const COLOR_DEFAULT: [number, number, number, number] = [140, 30, 50, 190]
-export const COLOR_HOVER: [number, number, number, number] = [180, 40, 60, 220]
-export const COLOR_SELECTED: [number, number, number, number] = [200, 50, 70, 230]
+export const COLOR_DEFAULT: [number, number, number, number] = [200, 200, 205, 200]
+export const COLOR_HOVER: [number, number, number, number] = [170, 170, 180, 220]
+export const COLOR_SELECTED: [number, number, number, number] = [140, 30, 50, 240]
 
 // 楼层渐变色：PolyU 红色系，低层深、高层浅
 export function getFloorColor(
