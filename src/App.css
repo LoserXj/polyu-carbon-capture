@@ -17,3 +17,49 @@
   width: 320px;
   z-index: 250;
 }
+
+/* Floating toolbar for export/clear */
+.floating-toolbar {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  z-index: 250;
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  transition: all 0.2s;
+}
+
+.toolbar-btn--export {
+  background: #8c1e32;
+  color: #fff;
+}
+
+.toolbar-btn--export:hover {
+  background: #a02540;
+  box-shadow: 0 4px 16px rgba(140, 30, 50, 0.3);
+}
+
+.toolbar-btn--clear {
+  background: #fff;
+  color: #888;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-btn--clear:hover {
+  background: #f5f5f5;
+  color: #666;
+}

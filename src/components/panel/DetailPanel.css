@@ -323,3 +323,121 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* ===== Header Actions ===== */
+.panel-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.panel-edit-btn {
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-edit-btn:hover {
+  color: #8c1e32;
+  background: rgba(140, 30, 50, 0.06);
+}
+
+.panel-id {
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 4px;
+  font-family: monospace;
+}
+
+/* ===== Edit Form ===== */
+.edit-form {
+  padding: 18px 20px;
+}
+
+.edit-field {
+  margin-bottom: 14px;
+}
+
+.edit-label {
+  display: block;
+  font-size: 11px;
+  color: #aaa;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}
+
+.edit-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  font-size: 13px;
+  color: #333;
+  background: #fafafa;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.edit-input:focus {
+  outline: none;
+  border-color: #8c1e32;
+  background: #fff;
+}
+
+.edit-select {
+  appearance: auto;
+  cursor: pointer;
+}
+
+.edit-textarea {
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.5;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.edit-btn {
+  flex: 1;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.edit-btn--save {
+  background: #8c1e32;
+  color: #fff;
+}
+
+.edit-btn--save:hover {
+  background: #a02540;
+}
+
+.edit-btn--cancel {
+  background: #f0f0f0;
+  color: #666;
+}
+
+.edit-btn--cancel:hover {
+  background: #e5e5e5;
+}

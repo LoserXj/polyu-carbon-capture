@@ -31,9 +31,10 @@ interface HoverInfo {
 interface MapViewProps {
   buildingsData: FeatureCollection | null
   onRegisterHandle: (handle: MapHandle) => void
+  onUpdateBuilding?: (id: string, updates: Partial<BuildingProperties>) => void
 }
 
-export default function MapView({ buildingsData, onRegisterHandle }: MapViewProps) {
+export default function MapView({ buildingsData, onRegisterHandle, onUpdateBuilding }: MapViewProps) {
   const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
   const [hoveredFloor, setHoveredFloor] = useState<number | null>(null)
@@ -238,6 +239,10 @@ export default function MapView({ buildingsData, onRegisterHandle }: MapViewProp
           highlightedFloor={highlightedFloor}
           onFloorSelect={handleFloorSelect}
           onClose={handleClose}
+          onUpdate={onUpdateBuilding ? (id, updates) => {
+            onUpdateBuilding(id, updates)
+            setSelectedBuilding(prev => prev ? { ...prev, ...updates } as BuildingProperties : null)
+          } : undefined}
         />
       )}
     </div>
