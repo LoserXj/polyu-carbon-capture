@@ -1,9 +1,10 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef, useMemo } from 'react'
 import './App.css'
 import MapView from './components/map/MapView'
 import TopBar from './components/layout/TopBar'
 import SearchBar from './components/search/SearchBar'
 import Loading from './components/layout/Loading'
+import StatsBar from './components/layout/StatsBar'
 import { useBuildings } from './hooks/useBuildings'
 import { useFloors } from './hooks/useFloors'
 import type { BuildingProperties } from './types'
@@ -20,6 +21,17 @@ function App() {
   const { exportGeoJSON: exportFloors, hasEdits: hasFloorEdits, clearEdits: clearFloorEdits } = useFloors(null)
 
   const hasEdits = hasBuildingEdits || hasFloorEdits
+
+  const campusStats = useMemo(() => {
+    if (!buildingsList.length) return null
+    return {
+      totalBuildings: buildingsList.length,
+      totalArea: buildingsList.reduce((sum, b) => sum + (b.building_area || 0), 0),
+      totalEnergy: buildingsList.reduce((sum, b) => sum + (b.annual_energy || 0), 0),
+      totalCarbon: buildingsList.reduce((sum, b) => sum + (b.annual_carbon || 0), 0),
+      totalCapture: buildingsList.reduce((sum, b) => sum + (b.carbon_capture || 0), 0),
+    }
+  }, [buildingsList])
 
   useEffect(() => {
     let innerTimer: ReturnType<typeof setTimeout>
@@ -59,6 +71,9 @@ function App() {
       <div className="floating-search">
         <SearchBar buildings={buildingsList} onSelect={handleSearchSelect} />
       </div>
+
+      {/* Campus stats bar */}
+      {campusStats && <StatsBar stats={campusStats} />}
 
       {/* Export / Clear toolbar */}
       {hasEdits && (

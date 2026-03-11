@@ -9,6 +9,19 @@
   height: 100%;
 }
 
+/* Bottom gradient mask for framed look */
+.app-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 100;
+}
+
 /* Floating search bar - top left, below TopBar */
 .floating-search {
   position: absolute;
@@ -54,7 +67,9 @@
 }
 
 .toolbar-btn--clear {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #888;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }

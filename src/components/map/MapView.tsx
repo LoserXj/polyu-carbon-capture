@@ -41,6 +41,7 @@ export default function MapView({ buildingsData, onRegisterHandle, onUpdateBuild
   const [hoverInfo, setHoverInfo] = useState<HoverInfo | null>(null)
   const [selectedBuilding, setSelectedBuilding] = useState<BuildingProperties | null>(null)
   const [highlightedFloor, setHighlightedFloor] = useState<number | null>(null)
+  const [closing, setClosing] = useState(false)
 
   const isFloorMode = selectedBuilding?.has_floors === true
   const expandedBuildingId = isFloorMode ? selectedBuilding.id : null
@@ -132,9 +133,13 @@ export default function MapView({ buildingsData, onRegisterHandle, onUpdateBuild
   }, [])
 
   const handleClose = useCallback(() => {
-    setSelectedBuilding(null)
-    setHighlightedFloor(null)
-    resetHoverState()
+    setClosing(true)
+    setTimeout(() => {
+      setSelectedBuilding(null)
+      setHighlightedFloor(null)
+      resetHoverState()
+      setClosing(false)
+    }, 300)
   }, [resetHoverState])
 
   const handleFloorSelect = useCallback((floor: number | null) => {
@@ -244,6 +249,7 @@ export default function MapView({ buildingsData, onRegisterHandle, onUpdateBuild
             setSelectedBuilding(prev => prev ? { ...prev, ...updates } as BuildingProperties : null)
           } : undefined}
           onUpdateFloor={updateFloor}
+          closing={closing}
         />
       )}
     </div>

@@ -1,0 +1,114 @@
+.energy-charts {
+  padding: 18px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.chart-section {
+  margin-bottom: 16px;
+}
+
+.chart-section:last-child {
+  margin-bottom: 0;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.chart-label {
+  font-size: 11px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.chart-header .chart-label {
+  margin-bottom: 0;
+}
+
+.chart-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-unit {
+  font-size: 11px;
+  font-weight: 400;
+  color: #aaa;
+}
+
+/* Progress bars */
+.progress-bar {
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-fill--capture {
+  background: linear-gradient(90deg, #8c1e32, #e85d75);
+}
+
+/* Bar chart */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-row-label {
+  font-size: 11px;
+  color: #888;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.bar-track {
+  flex: 1;
+  height: 14px;
+  background: #f0f0f0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bar-fill--carbon {
+  background: #d4d4d4;
+}
+
+.bar-fill--capture {
+  background: linear-gradient(90deg, #2e7d32, #66bb6a);
+}
+
+.bar-row-value {
+  font-size: 11px;
+  color: #666;
+  width: 55px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}

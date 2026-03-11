@@ -1,7 +1,7 @@
 import type { FieldMeta } from '../types';
 
 // 固定字段（代码强依赖，不在面板中展示）
-export const FIXED_FIELDS = new Set(['id', 'height', 'has_floors']);
+export const FIXED_FIELDS = new Set(['id', 'height', 'has_floors', 'floor_count', 'building_area', 'annual_energy', 'annual_carbon', 'carbon_capture']);
 
 // 字段配置表：控制显示行为
 export const FIELD_CONFIG: Record<string, FieldMeta> = {
@@ -11,6 +11,12 @@ export const FIELD_CONFIG: Record<string, FieldMeta> = {
   category:     { label: '类别',   showInTooltip: false, order: 4 },
   departments:  { label: '部门',   showInTooltip: false, order: 5 },
   description:  { label: '简介',   showInTooltip: false, order: 6 },
+  building_area: { label: '建筑面积', showInTooltip: false, order: 7, unit: 'm²' },
+  year_built:    { label: '建成年份', showInTooltip: false, order: 8 },
+  floor_count:   { label: '楼层数',   showInTooltip: true,  order: 9 },
+  annual_energy: { label: '年能耗',   showInTooltip: false, order: 10, unit: 'kWh' },
+  annual_carbon: { label: '年碳排放', showInTooltip: false, order: 11, unit: 'tCO₂' },
+  carbon_capture:{ label: '碳捕集量', showInTooltip: false, order: 12, unit: 'tCO₂' },
 };
 
 // 获取排序后的可展示字段

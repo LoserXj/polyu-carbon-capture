@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { getDisplayFields } from '../../config/fieldConfig'
 import FloorList from './FloorList'
+import EnergyCharts from './EnergyCharts'
 import type { BuildingProperties, FloorProperties } from '../../types'
 import type { Feature, Polygon } from 'geojson'
 import './DetailPanel.css'
@@ -13,6 +14,7 @@ interface DetailPanelProps {
   onClose: () => void
   onUpdate?: (id: string, updates: Partial<BuildingProperties>) => void
   onUpdateFloor?: (buildingId: string, floor: number, updates: Partial<FloorProperties>) => void
+  closing?: boolean
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -154,12 +156,14 @@ export default function DetailPanel({
   onClose,
   onUpdate,
   onUpdateFloor,
+  closing,
 }: DetailPanelProps) {
   const [editing, setEditing] = useState(false)
   const fields = getDisplayFields(properties)
 
-  const quickFields = fields.filter(f => ['name_zh', 'name_en', 'height', 'category'].includes(f.key))
-  const detailFields = fields.filter(f => !['name_zh', 'name_en', 'height', 'category'].includes(f.key))
+  const quickKeys = new Set(['name_zh', 'name_en', 'height', 'category'])
+  const quickFields = fields.filter(f => quickKeys.has(f.key))
+  const detailFields = fields.filter(f => !quickKeys.has(f.key))
 
   const handleSave = (updates: Partial<BuildingProperties>) => {
     onUpdate?.(properties.id, updates)
@@ -167,7 +171,7 @@ export default function DetailPanel({
   }
 
   return (
-    <div className="detail-panel">
+    <div className={`detail-panel ${closing ? 'detail-panel--closing' : ''}`}>
       {/* Header */}
       <div className="panel-header">
         <div className="panel-header-content">
@@ -224,6 +228,16 @@ export default function DetailPanel({
                   </div>
                 ))}
             </div>
+
+            {/* Energy Charts */}
+            {properties.annual_energy != null && (
+              <EnergyCharts
+                annualEnergy={properties.annual_energy}
+                annualCarbon={properties.annual_carbon}
+                carbonCapture={properties.carbon_capture}
+                buildingArea={properties.building_area}
+              />
+            )}
 
             {/* Detail fields */}
             {detailFields.length > 0 && (

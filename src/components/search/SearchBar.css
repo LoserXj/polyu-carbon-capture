@@ -6,8 +6,9 @@
 .search-input-wrapper {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 0 12px;
@@ -68,8 +69,9 @@
   left: 0;
   right: 0;
   margin-top: 6px;
-  background: rgba(255, 255, 255, 0.97);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 10px;
   overflow: hidden;
