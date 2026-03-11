@@ -25,7 +25,7 @@
 /* Floating search bar - top left, below TopBar */
 .floating-search {
   position: absolute;
-  top: 66px;
+  top: 70px;
   left: 20px;
   width: 320px;
   z-index: 250;

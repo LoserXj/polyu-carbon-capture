@@ -1,10 +1,10 @@
 /* ===== Panel Container ===== */
 .detail-panel {
   position: absolute;
-  top: 52px;
+  top: 56px;
   right: 0;
   width: 360px;
-  height: calc(100% - 52px);
+  height: calc(100% - 56px);
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
