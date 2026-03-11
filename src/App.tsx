@@ -5,6 +5,7 @@ import TopBar from './components/layout/TopBar'
 import SearchBar from './components/search/SearchBar'
 import Loading from './components/layout/Loading'
 import { useBuildings } from './hooks/useBuildings'
+import { useFloors } from './hooks/useFloors'
 import type { BuildingProperties } from './types'
 
 export interface MapHandle {
@@ -15,7 +16,10 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [fadeOut, setFadeOut] = useState(false)
   const mapHandleRef = useRef<MapHandle | null>(null)
-  const { data: buildingsData, list: buildingsList, updateBuilding, exportGeoJSON, hasEdits, clearEdits } = useBuildings()
+  const { data: buildingsData, list: buildingsList, updateBuilding, exportGeoJSON: exportBuildings, hasEdits: hasBuildingEdits, clearEdits: clearBuildingEdits } = useBuildings()
+  const { exportGeoJSON: exportFloors, hasEdits: hasFloorEdits, clearEdits: clearFloorEdits } = useFloors(null)
+
+  const hasEdits = hasBuildingEdits || hasFloorEdits
 
   useEffect(() => {
     let innerTimer: ReturnType<typeof setTimeout>
@@ -33,6 +37,16 @@ function App() {
     mapHandleRef.current?.selectBuilding(building)
   }, [])
 
+  const handleExport = useCallback(() => {
+    exportBuildings()
+    exportFloors()
+  }, [exportBuildings, exportFloors])
+
+  const handleClearEdits = useCallback(() => {
+    clearBuildingEdits()
+    clearFloorEdits()
+  }, [clearBuildingEdits, clearFloorEdits])
+
   return (
     <div className="app-container">
       {loading && <Loading fadeOut={fadeOut} />}
@@ -49,7 +63,7 @@ function App() {
       {/* Export / Clear toolbar */}
       {hasEdits && (
         <div className="floating-toolbar">
-          <button className="toolbar-btn toolbar-btn--export" onClick={exportGeoJSON} title="导出修改后的 buildings.geojson">
+          <button className="toolbar-btn toolbar-btn--export" onClick={handleExport} title="导出修改后的 GeoJSON 数据">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
               <polyline points="7 10 12 15 17 10" />
@@ -57,7 +71,7 @@ function App() {
             </svg>
             导出 GeoJSON
           </button>
-          <button className="toolbar-btn toolbar-btn--clear" onClick={clearEdits} title="清除所有编辑">
+          <button className="toolbar-btn toolbar-btn--clear" onClick={handleClearEdits} title="清除所有编辑">
             清除编辑
           </button>
         </div>

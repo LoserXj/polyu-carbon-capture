@@ -441,3 +441,37 @@
 .edit-btn--cancel:hover {
   background: #e5e5e5;
 }
+
+/* ===== Floor Edit ===== */
+.floor-item--editing {
+  padding: 12px 14px;
+  cursor: default;
+}
+
+.floor-edit-form {
+  width: 100%;
+}
+
+.floor-edit-form .edit-field {
+  margin-bottom: 10px;
+}
+
+.floor-edit-form .edit-actions {
+  margin-top: 12px;
+}
+
+.floor-edit-icon {
+  margin-left: auto;
+  color: #ccc;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.floor-edit-icon:hover {
+  color: #8c1e32;
+}

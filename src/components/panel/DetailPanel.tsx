@@ -12,6 +12,7 @@ interface DetailPanelProps {
   onFloorSelect: (floor: number | null) => void
   onClose: () => void
   onUpdate?: (id: string, updates: Partial<BuildingProperties>) => void
+  onUpdateFloor?: (buildingId: string, floor: number, updates: Partial<FloorProperties>) => void
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -152,6 +153,7 @@ export default function DetailPanel({
   onFloorSelect,
   onClose,
   onUpdate,
+  onUpdateFloor,
 }: DetailPanelProps) {
   const [editing, setEditing] = useState(false)
   const fields = getDisplayFields(properties)
@@ -243,6 +245,7 @@ export default function DetailPanel({
                 floors={floors}
                 highlightedFloor={highlightedFloor}
                 onFloorSelect={onFloorSelect}
+                onUpdateFloor={onUpdateFloor}
               />
             )}
           </>

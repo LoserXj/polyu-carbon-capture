@@ -45,7 +45,7 @@ export default function MapView({ buildingsData, onRegisterHandle, onUpdateBuild
   const isFloorMode = selectedBuilding?.has_floors === true
   const expandedBuildingId = isFloorMode ? selectedBuilding.id : null
 
-  const { activeFloors } = useFloors(expandedBuildingId)
+  const { activeFloors, updateFloor } = useFloors(expandedBuildingId)
   const totalFloors = activeFloors.length
 
   const resetHoverState = useCallback(() => {
@@ -243,6 +243,7 @@ export default function MapView({ buildingsData, onRegisterHandle, onUpdateBuild
             onUpdateBuilding(id, updates)
             setSelectedBuilding(prev => prev ? { ...prev, ...updates } as BuildingProperties : null)
           } : undefined}
+          onUpdateFloor={updateFloor}
         />
       )}
     </div>
