@@ -30,6 +30,7 @@
   height: 30px;
   object-fit: contain;
   flex-shrink: 0;
+  mix-blend-mode: multiply;
 }
 
 .top-bar-brand-name {

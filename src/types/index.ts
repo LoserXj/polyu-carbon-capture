@@ -10,7 +10,6 @@ export interface BuildingProperties {
   description: string;
   has_floors: boolean;
   building_area: number;
-  year_built: number;
   floor_count: number;
   annual_energy: number;
   annual_carbon: number;
